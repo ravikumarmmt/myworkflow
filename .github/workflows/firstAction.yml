@@ -1,11 +1,39 @@
-name: MyFirstWorkflow
+name: MY First Workflow
 on: push
 jobs:
-  myFirstJob:
+  lint:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Test code
+        run: npm run test
+  deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
-      - name: Print greeting
-        run: echo "Helloworld!"
-      - name: Print Goodbye
-        run: echo 'Done - Bye!'
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Build code
+        run: npm run build
+      - name: Deploy code
+        run: echo "Deploying..."
+      
+
+
+
         
