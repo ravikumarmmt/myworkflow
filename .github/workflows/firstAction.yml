@@ -5,7 +5,7 @@ env:
   port: 8000
   screcetno: Helloworld123
   awssecret: test@123
-  SHORT_TAG:  ${{ github.sha }}
+  SHORT_TAG:  $(openssl rand -hex 4) 
 
 jobs:
   variables:
