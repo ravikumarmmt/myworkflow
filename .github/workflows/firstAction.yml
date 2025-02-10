@@ -5,6 +5,7 @@ env:
   port: 8000
   screcetno: Helloworld123
   awssecret: test@123
+  mydate: $(date)
 
 jobs:
   lint:
@@ -14,5 +15,9 @@ jobs:
         run: echo ${{ env.port }}
       - name: Variable2
         run: echo $screcetno 
-      - name: Variable2
-        run: echo '${{ env.awssecret }}'         
+      - name: Variable3
+        run: echo '${{ env.awssecret }}'
+      - name: Variable4
+        run: echo '${{ env.mydate }}'
+      - name: Variable5
+        run: echo $mydate'                         
