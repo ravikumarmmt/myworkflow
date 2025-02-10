@@ -5,6 +5,7 @@ env:
   port: 8000
   screcetno: Helloworld123
   awssecret: test@123
+  SHORT_TAG: ''
 
 jobs:
   lint:
@@ -21,4 +22,10 @@ jobs:
       - name: Variable4
         run: echo '${{ env.SHORT_TAG }}'
       - name: Variable5
-        run: echo $SHORT_TAG'                         
+        run: echo $SHORT_TAG 
+
+  secjob:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Environment variables Next step
+        run: echo ${{ env.SHORT_TAG }}
