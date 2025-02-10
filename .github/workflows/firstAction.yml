@@ -5,7 +5,6 @@ env:
   port: 8000
   screcetno: Helloworld123
   awssecret: test@123
-  SHORT_TAG: ''
 
 jobs:
   lint:
