@@ -5,14 +5,14 @@ env:
   port: 8000
   screcetno: Helloworld123
   awssecret: test@123
-  SHORT_TAG: ''
+  SHORT_TAG:  ${{ github.sha }}
 
 jobs:
-  lint:
+  variables:
     runs-on: ubuntu-latest
     steps: 
-      - name: Generate Short Random Tag
-        run: echo "SHORT_TAG=$(openssl rand -hex 4)" >> $GITHUB_ENV      
+      # - name: Generate Short Random Tag
+      #   run: echo "SHORT_TAG=$(openssl rand -hex 4)" >> $GITHUB_ENV      
       - name: Environment variables
         run: echo ${{ env.port }}
       - name: Variable2
@@ -26,6 +26,7 @@ jobs:
 
   secjob:
     runs-on: ubuntu-latest
+    needs: variables
     steps: 
       - name: Environment variables Next step
         run: echo ${{ env.SHORT_TAG }}
