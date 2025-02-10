@@ -4,6 +4,7 @@ on: push
 env:
   port: 8000
   screcetno: Helloworld123
+  awssecret: test@123
 
 jobs:
   lint:
@@ -13,3 +14,5 @@ jobs:
         run: echo ${{ env.port }}
       - name: Variable2
         run: echo $screcetno 
+      - name: Variable2
+        run: echo '${{ env.awssecret }}'         
