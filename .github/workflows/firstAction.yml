@@ -5,7 +5,7 @@ env:
   port: 8000
   screcetno: Helloworld123
   awssecret: test@123
-  SHORT_TAG: "$RANDOM" 
+  SHORT_TAG: "$(openssl rand -hex 4)" 
 
 jobs:
   variables:
@@ -20,7 +20,7 @@ jobs:
       - name: Variable3
         run: echo '${{ env.awssecret }}'
       - name: Variable4
-        run: echo '${{ env.SHORT_TAG }}'
+        run: echo ${{ env.SHORT_TAG }}
       - name: Variable5
         run: echo $SHORT_TAG 
 
