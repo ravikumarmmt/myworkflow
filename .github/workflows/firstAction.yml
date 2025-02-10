@@ -1,40 +1,15 @@
 name: MY First Workflow
 on: push
+
+env:
+  port: 8000
+  screcetno: Helloworld123
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps: 
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint
-        run: npm run lint
-
-  test:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout Repository
-        uses: actions/checkout@v3  # 👈 Add this to access the source code
-
-      - name: Running Lint
-        run: echo "Lint..."
-
-      - name: List Files (Debugging)
-        run: ls -R  # 👈 This will show the files present in the runner
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: src-files
-          path: |
-            src
-            package.json
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy code
-        run: echo "Deploying..."
+      - name: Environment variables
+        run: echo ${{ env.port }}
+      - name: Variable2
+        run: echo $screcetno 
